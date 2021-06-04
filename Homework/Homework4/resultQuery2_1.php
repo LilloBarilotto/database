@@ -37,29 +37,38 @@
 
             // see error pt.1 (lenght<0 or >20)
             if(strlen($SSN)==0){
-                die("Error of type:"."You insert an empty SSN, why? .-.");
+                $string= "You insert an empty SSN, why? .-.";
+                echo "<div style='background-color: #ff4d4d;'><h1 style='color: white;'>ERROR!!!!</h1><p style='color: white;'>ERROR TYPE:".$string."</p></div>";
+                die();
             }
             if(strlen($SSN)>20){
-                die("Error of type:"."You insert a wrong SSN with too much letters... why? .-.");
+                $string="You insert a wrong SSN with too much letters... why? .-.";
+                echo "<div style='background-color: #ff4d4d;'><h1 style='color: white;'>ERROR!!!!</h1><p style='color: white;'>ERROR TYPE:".$string."</p></div>";
+                die();
             }
             // end see error pt.1
 
             $con= mysqli_connect('localhost','root','', 'homework4');
             if(mysqli_connect_errno()){
-                die("". mysqli_connect_error());
+                $string="".mysqli_connect_error();
+                echo "<div style='background-color: #ff4d4d;'><h1 style='color: white;'>ERROR!!!!</h1><p style='color: white;'>ERROR TYPE:".$string."</p></div>";
+                die();
             }
             
             // see error pt.2
             $result=mysqli_query($con, "SELECT SSN FROM USERS WHERE SSN='$SSN'");
             if(!$result){
-                $error= mysqli_connect_error($con);
+                $string= mysqli_connect_error($con);
                 mysqli_close($con);
-                die("Query error: ".$error);
+                echo "<div style='background-color: #ff4d4d;'><h1 style='color: white;'>ERROR!!!!</h1><p style='color: white;'>ERROR TYPE:".$string."</p></div>";
+                die();
             }
 
             if(mysqli_num_rows($result)==0){
+                $string="You insert a non-existing SSN in my db... why? And HOW BRO COME ON!!!!";
                 mysqli_close($con);
-                die("Error of type:"."You insert a non-existing SSN in my db... why? And HOW BRO COME ON!!!!");
+                echo "<div style='background-color: #ff4d4d;'><h1 style='color: white;'>ERROR!!!!</h1><p style='color: white;'>ERROR TYPE:".$string."</p></div>";
+                die();
             }
 
             // end see error pt.2
@@ -73,16 +82,18 @@
             $result= mysqli_query($con, $sql);
 
             if(!$result){
-                $error= mysqli_connect_error($con);
+                $string= mysqli_connect_error($con);
                 mysqli_close($con);
-                die("Query error: ".$error);
+                echo "<div style='background-color: #ff4d4d;'><h1 style='color: white;'>ERROR!!!!</h1><p style='color: white;'>ERROR TYPE:".$string."</p></div>";
+                die();
             }
 
             if(mysqli_num_rows($result)>0){
                 show_query_results($result);
             }
             else{
-                echo "<h4> No result .-. </h4>";
+                echo "<div style='background-color: #ff4d4d;'><h1 style='color: white;'>NOT AN ERROR BUT...</h1><p style='color: white;'>ERROR TYPE: No result... press F</p></div>";
+                die();
             }
 
             mysqli_close($con);

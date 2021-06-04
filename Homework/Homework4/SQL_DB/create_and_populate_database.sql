@@ -56,7 +56,7 @@ INSERT INTO USERS(SSN, Name, Surname, YearOfBirth)
 VALUES	("GZZSST00M22E532H", "Sebastiano", "Guzzone", 2000);
 
 INSERT INTO USERS(SSN, Name, Surname, YearOfBirth)
-VALUES	("VLRPGL00E15K555K", "Valerio", "Pagliarino", 2000);
+VALUES	("PGLVLR00D14F902A", "Valerio", "Pagliarino", 2000);
 
 INSERT INTO USERS(SSN, Name, Surname, YearOfBirth)
 VALUES	("BRCLNR00M62E532V", "Eleonora", "Breci", 2000);
@@ -91,7 +91,7 @@ INSERT INTO CONTENT(Category, Duration, Title, Description)
 VALUES	("History", 33 , "Gli anni di", "Sono un burlone");
 
 INSERT INTO CONTENT(Category, Duration, Title, Description)
-VALUES	("Adult", 50 , "Please $sp, push inside me!", "Ricorda di fare la pop in tempo...");
+VALUES	("Adult", 50 , "Please $sp, push inside me!", "Do the f***ing pop bro");
 
 INSERT INTO CONTENT(Category, Duration, Title, Description)
 VALUES	("Fantasy", 42 , "Alla prima compilazione non da errori", "Te piaciss ehhh, questo si che e' strong");
