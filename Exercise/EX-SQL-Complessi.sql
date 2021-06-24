@@ -94,3 +94,47 @@ WHERE StudentID NOT IN
         HAVING COUNT(*)= (SELECT COUNT(*)
                             FROM ASSIGNMENT_TO_BE_DELIVERED)      
         )
+
+
+--- Exercise no. 5
+SELECT DISTINCT SCode
+FROM SEMINAR-CALENDAR
+WHERE S-SSN IN
+    (
+     SELECT S-SSN
+     FROM EXPERTISE
+     GROUP BY S-SSN
+     HAVING COUNT(*)= 
+        (
+         SELECT MAX(#E)
+         FROM (
+                SELECT COUNT(*) AS #E
+                FROM EXPERTISE
+                GROUP BY S-SSN
+                ) 
+        ) 
+    )
+
+
+-- eXERCISE NO. 6
+SELECT C.TCode, C.CCode
+FROM COURSE C, LECTURE L
+WHERE C.TCode NOT IN 
+    (
+        SELECT TCode
+        FROM COURSE
+        WHERE Topic <>  'Databases'
+    )
+    AND C.CCode=L.CCode
+GROUP BY C.TCode, L.CCode 
+HAVING AVG(AttendingStudents#) =
+    (
+        SELECT Max(AvgStud)
+        FROM(
+            SELECT AVG(AttendingStudents#)
+            FROM COURSE C1, LECTURE L1
+            WHERE C1.TCode=C.TCode
+                AND L1.CCode= C1.CCode
+            GROUP BY C1.CCode
+        )
+    )
