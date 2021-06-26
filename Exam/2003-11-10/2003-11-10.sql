@@ -1,7 +1,12 @@
 --1.A
 SELECT DISTINCT CodC
 FROM PROGRAMMA
-WHERE OraInizio>=20
+WHERE CodC NOT IN
+    (
+        SELECT CodC
+        FROM PROGRAMMA
+        WHERE OraInizio<20
+    )
 GROUP BY Sala,CodC
 HAVING COUNT(*)>1
 
