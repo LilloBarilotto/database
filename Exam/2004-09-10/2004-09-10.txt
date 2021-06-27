@@ -1,0 +1,39 @@
+ER MODEL
+
+ENTITY: AUTISTA
+Int ID: MAtrA
+Attr: Nome,Patente,DataDiNascita, Telefono(0,1)
+
+ENTITY: TAXI
+IntID: Targa
+Attr: Modello, Posti, DataImm, Chilometraggio
+
+RELASHIONSHIP:
+AUTISTA(1,1)- TAXI(1,1)
+
+
+
+ENTITY: CALL_CENTER
+IntID: SSN
+Attr: Nome, Indirizzo, Telefono
+
+ENTITY: TIME
+IntID: Day,StartTime
+
+RELASHIONSHIP:
+CALL_CENTER(1,N)-TIME(1,N)
+Attr: EndTime
+
+
+ENTITY: CORSA
+IntID: CodC
+ExtID: Targa REFERENCES TAXI(Targa)
+Attr: Data,Ora,Durata,LuogoP,LuogoA,Importo,CodCliente,Presenti#
+
+
+SCHEMA LOGICO
+AUTISTA(MatrA__, Nome,Patente,DataDiNascita,Telefono*, TargaTaxi)
+TAXI(Targa__, Modello, Posti, DataImm, Chilometraggio)
+CALL_CENTER(SSN__, Nome, Indirizzo, Telefono)
+SERVIZIO(SSN__, Day__, StartTime__, EndTime)
+CORSA(CodC__,Targa__, Ora,Durata,LuogoP,LuogoA,Importo,CodCliente,Presenti#)
