@@ -68,7 +68,7 @@ HAVING COUNT(*)>=10
     AND SUM(NumberOfParticipants) =
     (SELECT MAX(SumNumber)
      FROM(
-            SELECT SUM(NumberOfParticipants) AS SumNumber
+            SELECT Monument, SUM(NumberOfParticipants) AS SumNumber
             FROM GUIDED-TOUR-CARRIED-OUT GTCO1,
                 TYPE-OF-TOUR TOT1,
                 GROUP G1
